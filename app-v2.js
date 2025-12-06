@@ -60,26 +60,101 @@ const App = {
 App.setupTabSystem = function () {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
+    const dropdownToggle = document.getElementById('tabDropdownToggle');
+    const dropdownMenu = document.getElementById('tabDropdownMenu');
+    const dropdownItems = document.querySelectorAll('.tab-dropdown-item');
+    const currentTabName = document.getElementById('currentTabName');
 
+    // Regular tab buttons
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const tabName = btn.dataset.tab;
-
-            // Update buttons
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Update content
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === `${tabName}-tab`) {
-                    content.classList.add('active');
-                }
-            });
-
-            this.activeTab = tabName;
+            this.switchTab(tabName, tabBtns, tabContents);
         });
     });
+
+    // Dropdown toggle
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownToggle.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownToggle.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    }
+
+    // Dropdown items
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const tabName = item.dataset.tab;
+            const tabText = item.querySelector('span').textContent;
+
+            // Update active states in dropdown
+            dropdownItems.forEach(di => di.classList.remove('active'));
+            item.classList.add('active');
+
+            // Update dropdown button text
+            if (currentTabName) {
+                // Get emoji from item
+                const emoji = this.getTabEmoji(tabName);
+                currentTabName.textContent = `${emoji} ${tabText}`;
+            }
+
+            // Close dropdown
+            if (dropdownToggle && dropdownMenu) {
+                dropdownToggle.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+
+            // Switch tab
+            this.switchTab(tabName, tabBtns, tabContents);
+        });
+    });
+};
+
+App.switchTab = function (tabName, tabBtns, tabContents) {
+    // Update buttons
+    tabBtns.forEach(b => b.classList.remove('active'));
+    const activeBtn = Array.from(tabBtns).find(b => b.dataset.tab === tabName);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    // Update content
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === `${tabName}-tab`) {
+            content.classList.add('active');
+        }
+    });
+
+    this.activeTab = tabName;
+};
+
+App.getTabEmoji = function (tabName) {
+    const emojis = {
+        video: '📹',
+        torrent: '🧲',
+        direct: '📥',
+        batch: '📝',
+        history: '🕒',
+        image: '📸',
+        audio: '🎵',
+        playlist: '📑',
+        document: '📚',
+        subtitle: '💬',
+        story: '📱',
+        website: '🌐',
+        github: '💻',
+        stream: '🎮',
+        cloud: '☁️'
+    };
+    return emojis[tabName] || '📄';
 };
 
 /*******************************
@@ -728,11 +803,110 @@ App.formatBytes = function (bytes) {
 };
 
 /*******************************
+ * New Downloader Features
+ *******************************/
+
+// Image Bulk Downloader
+App.setupImageDownloader = function () {
+    const btn = document.getElementById('imageDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Image bulk downloader is under development!');
+    });
+};
+
+// Audio Downloader
+App.setupAudioDownloader = function () {
+    const btn = document.getElementById('audioDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Audio downloader is under development!');
+    });
+};
+
+// Playlist Downloader
+App.setupPlaylistDownloader = function () {
+    const btn = document.getElementById('playlistDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Playlist downloader is under development!');
+    });
+};
+
+// Document Downloader
+App.setupDocumentDownloader = function () {
+    const btn = document.getElementById('docDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Document downloader is under development!');
+    });
+};
+
+// Subtitle Downloader
+App.setupSubtitleDownloader = function () {
+    const btn = document.getElementById('subtitleDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Subtitle downloader is under development!');
+    });
+};
+
+// Story Downloader
+App.setupStoryDownloader = function () {
+    const btn = document.getElementById('storyDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Story downloader is under development!');
+    });
+};
+
+// Website Cloner
+App.setupWebsiteCloner = function () {
+    const btn = document.getElementById('websiteDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Website cloner is under development!');
+    });
+};
+
+// GitHub Downloader
+App.setupGithubDownloader = function () {
+    const btn = document.getElementById('githubDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'GitHub downloader is under development!');
+    });
+};
+
+// Stream Recorder
+App.setupStreamRecorder = function () {
+    const btn = document.getElementById('streamDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Stream recorder is under development!');
+    });
+};
+
+// Cloud File Manager
+App.setupCloudDownloader = function () {
+    const btn = document.getElementById('cloudDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Cloud downloader is under development!');
+    });
+};
+
+/*******************************
  * Initialize App
  *******************************/
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize core app
     App.init();
+
+    // Initialize new downloaders
+    App.setupImageDownloader();
+    App.setupAudioDownloader();
+    App.setupPlaylistDownloader();
+    App.setupDocumentDownloader();
+    App.setupSubtitleDownloader();
+    App.setupStoryDownloader();
+    App.setupWebsiteCloner();
+    App.setupGithubDownloader();
+    App.setupStreamRecorder();
+    App.setupCloudDownloader();
+
+    console.log('✨ All 15 downloaders initialized!');
 });
 
 // Expose App to window
