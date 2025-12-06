@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="title" content="Q-Downloader Pro - Ultimate All-in-One Downloader">
+    <meta name="description"
+        content="Download videos, torrents, files, and more from 1000+ platforms. The ultimate all-in-one download solution.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Q-Downloader, video downloader, torrent downloader, file downloader, all-in-one">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Vijay Kumar">
+    <meta property="og:title" content="Q-Downloader Pro - Ultimate All-in-One Downloader">
+    <meta property="og:description" content="Download anything from anywhere. Videos, torrents, files, and more!">
+    <meta property="og:image" content="/logo.png">
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Q-Downloader Pro">
+    <meta name="twitter:description" content="The ultimate all-in-one download solution.">
+    <meta name="twitter:image" content="/logo.png">
+    <link rel="icon" href="/logo.png" sizes="32x32" type="image/png">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style-v2.css">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.3/purify.min.js"
+        integrity="sha512-Ll+TuDvrWDNNRnFFIM8dOiw7Go7dsHyxRp4RutiIFW/wm3DgDmCnRZow6AqbXnCbpWu93yM1O34q+4ggzGeXVA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- WebTorrent for browser-based torrenting -->
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+    <title>Q-Downloader Pro: All-in-One Download Manager</title>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="animated-bg"></div>
+
+    <header class="glass-header">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="Dark Logo H.png" class="logo-img" alt="Q-Downloader">
+                    <span class="brand-text">Q-Downloader Pro</span>
+                    <span class="beta-badge">ALL-IN-ONE</span>
+                </a>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container main-container">
+        <!-- Tab Navigation -->
+        <div class="tabs-container glass-card">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="video">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                    <span>Video</span>
+                </button>
+                <button class="tab-btn" data-tab="torrent">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <span>Torrent</span>
+                </button>
+                <button class="tab-btn" data-tab="direct">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Direct</span>
+                </button>
+                <button class="tab-btn" data-tab="batch">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    <span>Batch</span>
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>History</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content active" id="video-tab">
+            <div class="glass-card">
+                <h1 class="hero-title">📹 Download Videos from 1000+ Sites</h1>
+                <p class="subtitle">YouTube, Instagram, TikTok, Facebook, Twitter & more!</p>
+
+                <div class="search-wrapper">
+                    <input id="videoUrl" type="url" class="glass-input"
+                        placeholder="Paste video URL here (YouTube, Instagram, TikTok, etc.)...">
+                    <button id="videoDownloadBtn" class="glass-btn">
+                        <span>Get Download Links</span>
+                    </button>
+                </div>
+
+                <div id="videoLoading" class="loading-container" style="display: none;">
+                    <div class="wave-loader">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                    <p class="loading-text">Fetching video information...</p>
+                </div>
+
+                <div id="videoResult" class="result-container" style="display: none;">
+                    <div id="videoThumb" class="video-thumb-container"></div>
+                    <div id="videoTitle" class="video-title"></div>
+                    <div id="videoDescription" class="video-desc"></div>
+                    <div id="videoMeta" class="video-meta"></div>
+                    <div id="videoDownload" class="download-options"></div>
+                </div>
+
+                <div class="supported-platforms">
+                    <h3>🌐 Supported Platforms:</h3>
+                    <div class="platform-tags">
+                        <span class="tag">YouTube</span>
+                        <span class="tag">Instagram</span>
+                        <span class="tag">TikTok</span>
+                        <span class="tag">Facebook</span>
+                        <span class="tag">Twitter</span>
+                        <span class="tag">Vimeo</span>
+                        <span class="tag">Reddit</span>
+                        <span class="tag">+1000 more</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="torrent-tab">
+            <div class="glass-card">
+                <h1 class="hero-title">🧲 Download Torrents Directly in Browser</h1>
+                <p class="subtitle">No software needed! Supports magnet links & .torrent files</p>
+
+                <div class="search-wrapper">
+                    <input id="torrentMagnet" type="text" class="glass-input"
+                        placeholder="Paste magnet link or upload .torrent file...">
+                    <label for="torrentFile" class="glass-btn-secondary">
+                        <input type="file" id="torrentFile" accept=".torrent" style="display:none;">
+                        <span>📁 Upload .torrent</span>
+                    </label>
+                    <button id="torrentDownloadBtn" class="glass-btn">
+                        <span>Start Torrent</span>
+                    </button>
+                </div>
+
+                <div id="torrentInfo" class="info-box" style="display: none;">
+                    <p>ℹ️ Using WebTorrent - P2P downloads directly in your browser!</p>
+                </div>
+
+                <div id="torrentResult" class="result-container" style="display: none;">
+                    <div class="torrent-info">
+                        <h3 id="torrentName"></h3>
+                        <div class="torrent-stats">
+                            <div class="stat">
+                                <span class="label">Size:</span>
+                                <span id="torrentSize" class="value">-</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Files:</span>
+                                <span id="torrentFiles" class="value">-</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Peers:</span>
+                                <span id="torrentPeers" class="value">-</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Speed:</span>
+                                <span id="torrentSpeed" class="value">-</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="torrentProgress" class="progress-fill"></div>
+                            <span id="torrentPercent" class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div id="torrentFileList" class="file-list"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>🔥 Torrent Features:</h3>
+                    <ul class="feature-list">
+                        <li>✅ Magnet links support</li>
+                        <li>✅ .torrent file uploads</li>
+                        <li>✅ No software installation needed</li>
+                        <li>✅ Real-time progress tracking</li>
+                        <li>✅ Peer-to-peer technology</li>
+                        <li>✅ Works completely in browser</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="direct-tab">
+            <div class="glass-card">
+                <h1 class="hero-title">⚡ Direct File Download</h1>
+                <p class="subtitle">Download any HTTP/HTTPS file with progress tracking</p>
+
+                <div class="search-wrapper">
+                    <input id="directUrl" type="url" class="glass-input"
+                        placeholder="Paste direct file URL (zip, exe, pdf, mp4, etc.)...">
+                    <button id="directDownloadBtn" class="glass-btn">
+                        <span>Download File</span>
+                    </button>
+                </div>
+
+                <div id="directResult" class="result-container" style="display: none;">
+                    <div class="download-item">
+                        <div class="download-icon">📥</div>
+                        <div class="download-details">
+                            <h3 id="directFileName"></h3>
+                            <div class="download-meta">
+                                <span id="directFileSize">-</span>
+                                <span id="directFileType">-</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="directProgress" class="progress-fill"></div>
+                            <span id="directPercent" class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>⚡ Features:</h3>
+                    <ul class="feature-list">
+                        <li>✅ Any file type support</li>
+                        <li>✅ Progress tracking</li>
+                        <li>✅ Pause & resume (if server supports)</li>
+                        <li>✅ Speed monitoring</li>
+                        <li>✅ No file size limits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="batch-tab">
+            <div class="glass-card">
+                <h1 class="hero-title">📝 Batch Download</h1>
+                <p class="subtitle">Download multiple files at once - paste one URL per line</p>
+
+                <div class="batch-input-container">
+                    <textarea id="batchUrls" class="glass-textarea"
+                        placeholder="Paste multiple URLs here (one per line)&#10;&#10;Example:&#10;https://www.youtube.com/watch?v=...&#10;https://www.instagram.com/p/...&#10;magnet:?xt=urn:btih:...&#10;https://example.com/file.zip"
+                        rows="10"></textarea>
+                    <button id="batchDownloadBtn" class="glass-btn">
+                        <span>Process All URLs</span>
+                    </button>
+                </div>
+
+                <div id="batchResult" class="result-container" style="display: none;">
+                    <div class="batch-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="batchTotal">0</div>
+                            <div class="stat-label">Total</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="batchProcessing">0</div>
+                            <div class="stat-label">Processing</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="batchCompleted">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="batchFailed">0</div>
+                            <div class="stat-label">Failed</div>
+                        </div>
+                    </div>
+                    <div id="batchList" class="batch-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="history-tab">
+            <div class="glass-card">
+                <h1 class="hero-title">📜 Download History</h1>
+                <p class="subtitle">Track all your downloads</p>
+
+                <div class="history-actions">
+                    <button id="clearHistory" class="glass-btn-secondary">
+                        <span>🗑️ Clear History</span>
+                    </button>
+                    <button id="exportHistory" class="glass-btn-secondary">
+                        <span>💾 Export History</span>
+                    </button>
+                </div>
+
+                <div id="historyList" class="history-list">
+                    <div class="empty-state">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <h3>No download history yet</h3>
+                        <p>Your downloads will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Downloads Queue -->
+        <div id="downloadQueue" class="download-queue" style="display: none;">
+            <div class="queue-header">
+                <h3>📥 Active Downloads</h3>
+                <button id="minimizeQueue" class="icon-btn">−</button>
+            </div>
+            <div id="queueList" class="queue-list"></div>
+        </div>
+    </div>
+
+    <!-- Flash Popup -->
+    <div id="flashPopup" class="flash-popup" style="display: none;">
+        <div class="flash-content">
+            <div class="flash-icon">⚡</div>
+            <h3 id="flashTitle">Processing...</h3>
+            <p id="flashMessage">Please wait...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="container">
+            <p>Powered By The QUBO Company | Q-Downloader Pro - All-in-One Download Solution</p>
+            <p class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(() => {
+                console.log('Service Worker Registered');
+            });
+        }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J6S9D6Z17"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4J6S9D6Z17');
+    </script>
+
+    <!-- Keep original devdata for compatibility -->
+    <script src="https://vkrdownloader.org/static/js/devdata.js"></script>
+
+    <!-- Main application scripts -->
+    <script src="app-v2.js"></script>
+</body>
+
+</html>
