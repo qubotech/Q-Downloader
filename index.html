@@ -40,8 +40,6 @@
     <title>Q-Downloader</title>
 
     <style>
-
-
         /* Download Selector Header */
         .download-selector-header {
             text-align: center;
@@ -553,7 +551,12 @@
 
         <!-- Tab Navigation -->
         <div class="tabs-container">
-            <div class="tabs">
+            <button class="tab-scroll-btn tab-scroll-left" id="scrollLeft">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="tabs" id="tabsScroller">
                 <button class="tab-btn active" data-tab="video">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="23 7 16 12 23 17 23 7"></polygon>
@@ -575,25 +578,7 @@
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    <span>Direct</span>
-                </button>
-                <button class="tab-btn" data-tab="batch">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="8" y1="6" x2="21" y2="6"></line>
-                        <line x1="8" y1="12" x2="21" y2="12"></line>
-                        <line x1="8" y1="18" x2="21" y2="18"></line>
-                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                    </svg>
-                    <span>Batch</span>
-                </button>
-                <button class="tab-btn" data-tab="history">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span>History</span>
+                    <span>Files</span>
                 </button>
                 <button class="tab-btn" data-tab="image">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -682,7 +667,30 @@
                     </svg>
                     <span>Cloud</span>
                 </button>
+                <button class="tab-btn" data-tab="batch">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    <span>Batch</span>
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>History</span>
+                </button>
             </div>
+            <button class="tab-scroll-btn tab-scroll-right" id="scrollRight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
         </div>
 
         <!-- Mobile Tab Dropdown -->
@@ -715,25 +723,7 @@
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    <span>Direct Download</span>
-                </div>
-                <div class="tab-dropdown-item" data-tab="batch">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="8" y1="6" x2="21" y2="6"></line>
-                        <line x1="8" y1="12" x2="21" y2="12"></line>
-                        <line x1="8" y1="18" x2="21" y2="18"></line>
-                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                    </svg>
-                    <span>Batch Download</span>
-                </div>
-                <div class="tab-dropdown-item" data-tab="history">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span>Download History</span>
+                    <span>Files Download</span>
                 </div>
                 <div class="tab-dropdown-item" data-tab="image">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -821,6 +811,24 @@
                         <polyline points="9 15 12 17 15 15"></polyline>
                     </svg>
                     <span>Cloud File Manager</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="batch">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    <span>Batch Download</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="history">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Download History</span>
                 </div>
             </div>
         </div>
@@ -1687,6 +1695,7 @@ https://example.com/file.zip" rows="10"></textarea>
 
     <!-- Use the PRODUCTION-READY app-v2.js -->
     <script src="app-v2.js"></script>
+    <script src="tab-scroll.js"></script>
 </body>
 
 </html>
