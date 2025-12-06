@@ -296,62 +296,24 @@ App.renderVideoDownloadOptions = function (videoData, inputUrl) {
 App.triggerVideoDownload = function () {
     const select = document.getElementById('formatSelect');
     if (!select || !select.value) {
-        this.showFlash('⚠️ Select Format', 'Please choose a quality first');
+        alert('Please select a format first!');
         return;
     }
 
     const url = select.value;
+    this.showFlash('⚡ Download Starting', 'Opening download...');
 
-    // Animate Popup
-    this.showFlash('⚡ Processing', 'Requesting file from server...');
-
-    // Handling Converter vs Direct
-    if (url.includes('apibtn')) {
-        // CONVERTER: Open inside a Modal (Popup)
-        setTimeout(() => {
-            const modalId = 'converterModal';
-            let modal = document.getElementById(modalId);
-
-            // Create Modal if missing
-            if (!modal) {
-                modal = document.createElement('div');
-                modal.id = modalId;
-                modal.style.cssText = `
-                    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                    background: rgba(0,0,0,0.8); z-index: 9999;
-                    display: flex; align-items: center; justify-content: center;
-                    backdrop-filter: blur(5px); animation: fadeIn 0.3s;
-                `;
-                modal.innerHTML = `
-                    <div style="width: 90%; max-width: 600px; height: 80%; background: white; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(56, 0, 255, 0.5);">
-                        <button onclick="document.getElementById('${modalId}').remove()" style="position: absolute; top: 10px; right: 10px; background: #ff4444; border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 100;">✕</button>
-                        <div style="height: 40px; background: #3800ff; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                            🔄 Cloud Converter
-                        </div>
-                        <iframe src="" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-            }
-
-            modal.querySelector('iframe').src = url;
-            this.showFlash('⚙️ Converting', 'Please wait inside the popup...');
-        }, 1000);
-
-    } else {
-        // DIRECT DOWNLOAD: Use Hidden Iframe (Stays on Page)
-        setTimeout(() => {
-            let hiddenFrame = document.getElementById('hiddenDownloader');
-            if (!hiddenFrame) {
-                hiddenFrame = document.createElement('iframe');
-                hiddenFrame.id = 'hiddenDownloader';
-                hiddenFrame.style.display = 'none';
-                document.body.appendChild(hiddenFrame);
-            }
-            hiddenFrame.src = url;
-            this.showFlash('⬇️ Downloading', 'Your download should start shortly!');
-        }, 1500);
-    }
+    setTimeout(() => {
+        document.getElementById('flashPopup').style.display = 'none';
+        if (url.includes('apibtn')) {
+            const width = 600, height = 400;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+            window.open(url, 'VKrDownload', `width=${width},height=${height},top=${top},left=${left}`);
+        } else {
+            window.location.href = url;
+        }
+    }, 1500);
 };
 
 App.getYouTubeVideoId = function (url) {
