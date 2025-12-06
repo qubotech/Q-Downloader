@@ -152,7 +152,12 @@ App.getTabEmoji = function (tabName) {
         website: '🌐',
         github: '💻',
         stream: '🎮',
-        cloud: '☁️'
+        cloud: '☁️',
+        apk: '🤖',
+        thumbnail: '🖼️',
+        font: '🔡',
+        archive: '🏛️',
+        course: '🎓'
     };
     return emojis[tabName] || '📄';
 };
@@ -886,6 +891,46 @@ App.setupCloudDownloader = function () {
     });
 };
 
+// APK Downloader
+App.setupApkDownloader = function () {
+    const btn = document.getElementById('apkDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'APK downloader is under development!');
+    });
+};
+
+// Thumbnail Downloader
+App.setupThumbnailDownloader = function () {
+    const btn = document.getElementById('thumbnailDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Thumbnail downloader is under development!');
+    });
+};
+
+// Font Downloader
+App.setupFontDownloader = function () {
+    const btn = document.getElementById('fontDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Font downloader is under development!');
+    });
+};
+
+// Archive Downloader
+App.setupArchiveDownloader = function () {
+    const btn = document.getElementById('archiveDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Wayback Machine downloader is under development!');
+    });
+};
+
+// Course Downloader
+App.setupCourseDownloader = function () {
+    const btn = document.getElementById('courseDownloadBtn');
+    if (btn) btn.addEventListener('click', () => {
+        this.showFlash('🚀 Coming Soon', 'Course downloader is under development!');
+    });
+};
+
 /*******************************
  * Initialize App
  *******************************/
@@ -905,6 +950,13 @@ document.addEventListener('DOMContentLoaded', () => {
     App.setupGithubDownloader();
     App.setupStreamRecorder();
     App.setupCloudDownloader();
+
+    // New Additions
+    App.setupApkDownloader();
+    App.setupThumbnailDownloader();
+    App.setupFontDownloader();
+    App.setupArchiveDownloader();
+    App.setupCourseDownloader();
 
     console.log('✨ All 15 downloaders initialized!');
 });

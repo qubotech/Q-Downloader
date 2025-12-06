@@ -659,6 +659,50 @@
                     </svg>
                     <span>Stream</span>
                 </button>
+                </button>
+                <button class="tab-btn" data-tab="apk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a2 2 0 0 1 2 2v2h-4V4a2 2 0 0 1 2-2z"></path>
+                        <rect x="5" y="6" width="14" height="14" rx="2" ry="2"></rect>
+                        <path d="M9 22v-2"></path>
+                        <path d="M15 22v-2"></path>
+                        <path d="M3 10h2"></path>
+                        <path d="M19 10h2"></path>
+                    </svg>
+                    <span>APK</span>
+                </button>
+                <button class="tab-btn" data-tab="thumbnail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                        <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" fill-opacity="0.2"></polygon>
+                    </svg>
+                    <span>Thumb</span>
+                </button>
+                <button class="tab-btn" data-tab="font">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                    </svg>
+                    <span>Font</span>
+                </button>
+                <button class="tab-btn" data-tab="archive">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8v4l3 3"></path>
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M3.05 11a9 9 0 0 1 .56-2.22m12.84 0a9 9 0 0 1 4.5 9"></path>
+                    </svg>
+                    <span>Archive</span>
+                </button>
+                <button class="tab-btn" data-tab="course">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                    <span>Course</span>
+                </button>
                 <button class="tab-btn" data-tab="cloud">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
@@ -811,6 +855,43 @@
                         <polyline points="9 15 12 17 15 15"></polyline>
                     </svg>
                     <span>Cloud File Manager</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="apk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a2 2 0 0 1 2 2v2h-4V4a2 2 0 0 1 2-2z"></path>
+                        <rect x="5" y="6" width="14" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                    <span>APK/App Downloader</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="thumbnail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <span>Thumbnail Grabber</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="font">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                    </svg>
+                    <span>Font & Icon Finder</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="archive">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8v4l3 3"></path>
+                        <circle cx="12" cy="12" r="9"></circle>
+                    </svg>
+                    <span>Wayback Archive</span>
+                </div>
+                <div class="tab-dropdown-item" data-tab="course">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                    <span>Course Downloader</span>
                 </div>
                 <div class="tab-dropdown-item" data-tab="batch">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1650,6 +1731,117 @@ https://example.com/file.zip" rows="10"></textarea>
                 </div>
             </div>
         </div>
+        <!-- APK Downloader Tab -->
+        <div class="tab-content" id="apk-tab">
+            <div class="glass-card p-5">
+                <h1 class="hero-title">APK & App Downloader</h1>
+                <p class="subtitle">Download APKs from Google Play Store & other sources.</p>
+                <div class="search-wrapper">
+                    <input id="apkUrl" type="text" class="glass-input"
+                        placeholder="Enter Package ID or Google Play URL...">
+                    <button id="apkDownloadBtn" class="glass-btn">
+                        <span>Download APK</span>
+                    </button>
+                </div>
+                <div class="mt-5">
+                    <h3 style="text-align: center;">⚙️ Features:</h3>
+                    <ul class="feature-list mt-3">
+                        <li>✅ Original APKs</li>
+                        <li>✅ No Region Lock</li>
+                        <li>✅ Fast Servers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thumbnail Downloader Tab -->
+        <div class="tab-content" id="thumbnail-tab">
+            <div class="glass-card p-5">
+                <h1 class="hero-title">HD Thumbnail Grabber</h1>
+                <p class="subtitle">Download 4K/HD Thumbnails from YouTube, Vimeo & TikTok.</p>
+                <div class="search-wrapper">
+                    <input id="thumbnailUrl" type="url" class="glass-input" placeholder="Paste video URL...">
+                    <button id="thumbnailDownloadBtn" class="glass-btn">
+                        <span>Get Thumbnails</span>
+                    </button>
+                </div>
+                <div class="mt-5">
+                    <h3 style="text-align: center;">🖼️ Supports:</h3>
+                    <ul class="feature-list mt-3">
+                        <li>✅ 4K Resolution</li>
+                        <li>✅ YouTube & Shorts</li>
+                        <li>✅ Vimeo & TikTok</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Font Downloader Tab -->
+        <div class="tab-content" id="font-tab">
+            <div class="glass-card p-5">
+                <h1 class="hero-title">Font & Icon Finder</h1>
+                <p class="subtitle">Download free fonts and icons for your projects.</p>
+                <div class="search-wrapper">
+                    <input id="fontUrl" type="text" class="glass-input" placeholder="Search for fonts or icons...">
+                    <button id="fontDownloadBtn" class="glass-btn">
+                        <span>Search</span>
+                    </button>
+                </div>
+                <div class="mt-5">
+                    <h3 style="text-align: center;">🎨 Sources:</h3>
+                    <ul class="feature-list mt-3">
+                        <li>✅ Google Fonts</li>
+                        <li>✅ DaFont</li>
+                        <li>✅ Material Icons</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Downloader Tab -->
+        <div class="tab-content" id="archive-tab">
+            <div class="glass-card p-5">
+                <h1 class="hero-title">Wayback Machine Downloader</h1>
+                <p class="subtitle">Recover deleted content and view archived websites.</p>
+                <div class="search-wrapper">
+                    <input id="archiveUrl" type="url" class="glass-input" placeholder="Enter website URL...">
+                    <button id="archiveDownloadBtn" class="glass-btn">
+                        <span>Check Archive</span>
+                    </button>
+                </div>
+                <div class="mt-5">
+                    <h3 style="text-align: center;">🕰️ Capabilities:</h3>
+                    <ul class="feature-list mt-3">
+                        <li>✅ View Deleted Sites</li>
+                        <li>✅ Recover Old Data</li>
+                        <li>✅ 20+ Years History</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Downloader Tab -->
+        <div class="tab-content" id="course-tab">
+            <div class="glass-card p-5">
+                <h1 class="hero-title">Course Material Downloader</h1>
+                <p class="subtitle">Download course materials and educational resources.</p>
+                <div class="search-wrapper">
+                    <input id="courseUrl" type="url" class="glass-input" placeholder="Paste course URL...">
+                    <button id="courseDownloadBtn" class="glass-btn">
+                        <span>Fetch Materials</span>
+                    </button>
+                </div>
+                <div class="mt-5">
+                    <h3 style="text-align: center;">🎓 Platforms:</h3>
+                    <ul class="feature-list mt-3">
+                        <li>✅ OpenCourseWare</li>
+                        <li>✅ Educational Sites</li>
+                        <li>✅ PDF Resources</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <br>
